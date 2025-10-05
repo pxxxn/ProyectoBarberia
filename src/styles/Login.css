@@ -1,0 +1,346 @@
+/* styles/Login.css */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Roboto:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #0a0a0a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Efectos de fondo animados */
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 80, 50, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(200, 150, 100, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(160, 100, 60, 0.05) 0%, transparent 50%);
+  animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+/* Tijeras animadas flotando */
+.scissors {
+  position: absolute;
+  font-size: 24px;
+  color: #d4af37;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+}
+
+.scissors:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.scissors:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+.scissors:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 2s; }
+.scissors:nth-child(4) { bottom: 25%; right: 10%; animation-delay: 3s; }
+
+/* Tarjeta del login con efecto neón */
+.login-card {
+  background: rgba(20, 20, 20, 0.95);
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.3),
+    0 0 60px rgba(120, 80, 50, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  width: 400px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(10px);
+  animation: cardEntrance 1s ease-out;
+}
+
+/* Efecto de brillo en los bordes */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #d4af37, #8b6914, #d4af37, #8b6914);
+  border-radius: 18px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.login-card:hover::before {
+  opacity: 1;
+  animation: borderGlow 2s linear infinite;
+}
+
+/* Logo con efecto de rotación sutil */
+.login-logo {
+  width: 140px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid #d4af37;
+  padding: 8px;
+  background: rgba(20, 20, 20, 0.9);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  animation: logoFloat 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.login-logo:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+/* Título con efecto metálico */
+.login-title {
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.3);
+  position: relative;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.login-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  animation: linePulse 3s ease-in-out infinite;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Inputs personalizados */
+.login-input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 14px 16px;
+  font-size: 1rem;
+  background: rgba(40, 40, 40, 0.8);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.login-input::placeholder {
+  color: #888;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  background: rgba(50, 50, 50, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Botón con efecto de brillo dorado */
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 50%, #d4af37 100%);
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 5px 20px rgba(212, 175, 55, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:active {
+  transform: translateY(-1px);
+}
+
+/* Animaciones */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.5);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes backgroundPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes linePulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scaleX(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Efectos de partículas */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #d4af37;
+  border-radius: 50%;
+  animation: particleFloat 8s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .login-title {
+    font-size: 1.8rem;
+  }
+}
+/* Botón Olvidé contraseña */
+.forgot-password-button {
+  margin-top: 20px; /* Espacio debajo del botón Ingresar */
+  background: none;
+  border: none;
+  color: #3498db;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-button:hover {
+  color: #2980b9;
+}
